@@ -1,0 +1,1 @@
+export const baseUrl = 'https://newsapi.org/v2/everything?q=Apple&from=2024-09-10&sortBy=popularity&apiKey=API_KEY'
