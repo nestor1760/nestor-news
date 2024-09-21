@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IArticlesState } from "../types/reduxTypes";
-import { baseUrl } from "../api-links/apiLinks";
 import { IArticle } from "../types/types";
 
 
@@ -14,7 +13,7 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
   'articles/fetchArticles',
 
   async () => {
-    const url = baseUrl
+    const url = process.env.NEXT_PUBLIC_ARTICLES_ALL_URL as string
 
     try {
       const response = await fetch(url)

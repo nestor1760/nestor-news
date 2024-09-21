@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import ReduxProvider from "./Provider";
+import "./styles/globals.css";
+import ReduxProvider from "./components/ReduxProvider";
 import SessionWrapper from "@/app/components/SessionWrapper";
 
 
