@@ -1,23 +1,10 @@
-"use client"
-
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "./hook";
-import { fetchArticles } from "./store/articlesSlice";
-import Dashboard from "./components/Dashboard";
+import Link from "next/link";
 
 export default function Home() {
-  const dispatch = useAppDispatch()
-  const { articles } = useAppSelector(state => state.articles)
-
-  console.log(articles);
-
-  useEffect(() => {
-    dispatch(fetchArticles())
-  }, [])
-
   return (
-    <div className="w-screen flex items-center justify-center">
-      <Dashboard />
+    <div className="h-screen flex items-center justify-center">
+      <h1 className="text-4xl">Home</h1>
+      <Link href='/admin'>Open My Admin</Link>
     </div>
   );
 }

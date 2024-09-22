@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
-import ReduxProvider from "./components/ReduxProvider";
-import SessionWrapper from "@/app/components/SessionWrapper";
+import Navbar from "./UI/Navbar";
 
 
 export const metadata: Metadata = {
@@ -15,14 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionWrapper>
-      <html lang="en">
-        <body>
-          <ReduxProvider>
-            {children}
-          </ReduxProvider>
-        </body>
-      </html>
-    </SessionWrapper>
+    <html lang="en">
+      <body>
+        <Navbar />
+        {children}
+      </body>
+    </html>
   );
 }
