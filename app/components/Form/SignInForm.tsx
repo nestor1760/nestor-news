@@ -7,12 +7,13 @@ import Link from 'next/link';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/app/UI/Form';
 import { Input } from '@/app/UI/Input';
 import { Button } from '@/app/UI/Button';
-import SignInBtn from '@/app/UI/SignInBtn';
+import SignInGoogle from '@/app/UI/SignInGoogle';
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-
+import { toast } from '@/hooks/use-toast';
+import SignInGithub from '@/app/UI/SignInGithub';
 
 const FormSchema = z.object({
   email: z.string().min(1, 'Email is required').email('Invalid email'),
@@ -40,10 +41,14 @@ const SignInForm = () => {
     });
 
     if (signInData?.error) {
-      console.log(signInData.error);
+      toast({
+        title: "Error",
+        description: "Oops! Something went wrong!",
+        variant: 'destructive'
+      })
     } else {
-      router.refresh()
       router.push('/admin')
+      router.refresh()
     }
 
   };
@@ -90,9 +95,9 @@ const SignInForm = () => {
       <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
         or
       </div>
-      <div className='flex items-center justify-between w-full'>
-        <SignInBtn signInMethod='google'><FaGoogle size={30} /></SignInBtn>
-        <SignInBtn signInMethod='github'><FaGithub size={30} /></SignInBtn>
+      <div className='flex items-center justify-between'>
+        <SignInGoogle><FaGoogle size={30} /></SignInGoogle>
+        <SignInGithub><FaGithub size={30} /></SignInGithub>
       </div>
       <p className='text-center text-sm text-gray-600 mt-2'>
         If you don&apos;t have an account, please&nbsp;

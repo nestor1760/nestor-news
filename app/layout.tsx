@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import Navbar from "./UI/Navbar";
+import { Toaster } from "@/app/UI/toaster"
+import ProviderSession from "./lib/SessionProvider";
 
 
 export const metadata: Metadata = {
@@ -16,8 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
+        <ProviderSession>
+          <Navbar />
+          {children}
+          <Toaster />
+        </ProviderSession>
       </body>
     </html>
   );

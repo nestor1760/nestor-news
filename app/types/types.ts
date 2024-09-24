@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 //article news
 interface ArticleSource {
   id: string;
@@ -13,4 +15,9 @@ export interface IArticle {
   urlToImage: string;
   publishedAt: Date;
   content: string;
+}
+
+//for SessionProvider.tsx
+export interface ISessionProps {
+  children: ReactNode,
 }

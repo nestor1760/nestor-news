@@ -1,3 +1,4 @@
+import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from "./db";
@@ -14,6 +15,10 @@ export const authOptions: NextAuthOptions = {
     signIn: '/sign-in'
   },
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -32,9 +37,11 @@ export const authOptions: NextAuthOptions = {
           return null
         }
 
-        const passwordMatch = await compare(credentials.password, existingUser.password)
-        if (!passwordMatch) {
-          return null
+        if (existingUser.password) {
+          const passwordMatch = await compare(credentials.password, existingUser.password)
+          if (!passwordMatch) {
+            return null
+          }
         }
 
         return {
@@ -43,7 +50,7 @@ export const authOptions: NextAuthOptions = {
           email: existingUser.email,
         }
       }
-    }),
+    })
   ],
   callbacks: {
     async jwt({ token, user }) {
