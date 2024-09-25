@@ -1,9 +1,9 @@
 "use client"
 
 import { signOut } from "next-auth/react"
-import { Button } from "./Button"
+import { Button } from "../Button/Button"
 
-const UserAccountNav = () => {
+const SignOutBtn = () => {
   return (
     <Button
       onClick={() => signOut({
@@ -18,4 +18,4 @@ const UserAccountNav = () => {
   )
 }
 
-export default UserAccountNav
+export default SignOutBtn

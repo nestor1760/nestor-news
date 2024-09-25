@@ -1,9 +1,11 @@
 import { authOptions } from '@/app/lib/authOptions';
-import { getServerSession } from 'next-auth/next'
+import { buttonVariants } from '@/app/UI/Button/Button';
+import SignOutBtn from '@/app/UI/SignOut/SignOutBtn';
+import { getServerSession } from 'next-auth/next';
 import Image from 'next/image';
-import React from 'react'
+import Link from 'next/link';
 
-const page = async () => {
+const Admin = async () => {
   const session = await getServerSession(authOptions)
 
   if (session?.user) {
@@ -13,20 +15,23 @@ const page = async () => {
           ? <Image src={session?.user.image} alt='avatar' width={200} height={200} />
           : null
         }
-        {(session?.user.username)
-          ? <h2 className='text-2xl'>Admin page - welcome back {session?.user.username}</h2>
-          : <h2 className='text-2xl'>Admin page - welcome back {session?.user.name}</h2>
-        }
-
+        <h2 className='text-3xl my-3'>Admin page - welcome back {(session?.user.username) ? session?.user.username : session?.user.name}</h2>
+        <SignOutBtn />
       </div>
     )
   }
 
   return (
-    <div className='flex items-center justify-center h-screen'>
-      <h2 className='text-2xl'>Please login to see this admin page</h2>
+    <div className='flex items-center justify-center flex-col h-screen'>
+      <h2 className='text-2xl mb-3'>Please login to see your admin page</h2>
+      <Link
+        href='/sign-in'
+        className={buttonVariants()}
+      >
+        Login
+      </Link>
     </div>
   )
 }
 
-export default page
+export default Admin

@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { Button } from '../Button/Button';
 import { signIn } from 'next-auth/react';
 
 const SignInGoogle = () => {
