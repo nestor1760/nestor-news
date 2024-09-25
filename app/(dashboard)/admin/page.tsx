@@ -10,7 +10,7 @@ const page = async () => {
     return (
       <div className='flex items-center justify-center h-screen flex-col'>
         {(session?.user.image)
-          ? <Image src={session?.user.image!} alt='avatar' width={200} height={200} />
+          ? <Image src={session?.user.image} alt='avatar' width={200} height={200} />
           : null
         }
         {(session?.user.username)

@@ -8,12 +8,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/app/UI/Input';
 import { Button } from '@/app/UI/Button';
 import SignInGoogle from '@/app/UI/SignInGoogle';
-import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { toast } from '@/hooks/use-toast';
-import SignInGithub from '@/app/UI/SignInGithub';
 
 const FormSchema = z.object({
   email: z.string().min(1, 'Email is required').email('Invalid email'),
@@ -96,8 +93,7 @@ const SignInForm = () => {
         or
       </div>
       <div className='flex items-center justify-between'>
-        <SignInGoogle><FaGoogle size={30} /></SignInGoogle>
-        <SignInGithub><FaGithub size={30} /></SignInGithub>
+        <SignInGoogle />
       </div>
       <p className='text-center text-sm text-gray-600 mt-2'>
         If you don&apos;t have an account, please&nbsp;

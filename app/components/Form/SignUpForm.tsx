@@ -9,12 +9,8 @@ import { Button } from '@/app/UI/Button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/app/UI/Form';
 import { Input } from '@/app/UI/Input';
-import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
 import { toast } from '@/hooks/use-toast';
 import SignInGoogle from '@/app/UI/SignInGoogle';
-import SignInGithub from '@/app/UI/SignInGithub';
-
 
 const FormSchema = z
   .object({
@@ -140,8 +136,7 @@ const SignUpForm = () => {
         or
       </div>
       <div className='flex items-center justify-between'>
-        <SignInGoogle><FaGoogle size={30} /></SignInGoogle>
-        <SignInGithub><FaGithub size={30} /></SignInGithub>
+        <SignInGoogle />
       </div>
       <p className='text-center text-sm text-gray-600 mt-2'>
         If you don&apos;t have an account, please&nbsp;

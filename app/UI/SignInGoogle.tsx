@@ -1,8 +1,7 @@
-import { ReactNode } from 'react';
 import { Button } from './Button';
 import { signIn } from 'next-auth/react';
 
-const SignInGoogle = ({ children }: { children: ReactNode }) => {
+const SignInGoogle = () => {
   const loginWithGoogle = () => signIn(
     'google',
     { callbackUrl: 'http://localhost:3000/admin' }
@@ -10,7 +9,7 @@ const SignInGoogle = ({ children }: { children: ReactNode }) => {
 
   return (
     <Button onClick={loginWithGoogle} className='w-full'>
-      {children}
+      Sign in with Google
     </Button>
   );
 };
