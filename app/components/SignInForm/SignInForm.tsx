@@ -53,7 +53,8 @@ const SignInForm = () => {
 
   return (
     <Form {...form}>
-      <div className='w-[350px] rounded-lg p-4 shadow-custom bg-amber-100'>
+      {/* <div className='w-[350px] rounded-lg p-4 shadow-custom bg-amber-100'> */}
+      <div className='w-[350px] rounded-lg p-4 shadow-custom border-solid border-[1px] text-stone-500 border-stone-400'>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className='w-full'
@@ -95,6 +96,7 @@ const SignInForm = () => {
           </div>
           <Button
             className='w-full mt-6'
+            variant={'secondary'}
             type='submit'
           >
             Sign in

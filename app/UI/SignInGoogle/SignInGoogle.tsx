@@ -8,7 +8,7 @@ const SignInGoogle = () => {
   );
 
   return (
-    <Button onClick={loginWithGoogle} className='w-full'>
+    <Button onClick={loginWithGoogle} className='w-full' variant={'secondary'}>
       Sign in with Google
     </Button>
   );

@@ -12,7 +12,7 @@ const Admin = async () => {
     return (
       <div className='flex items-center justify-center h-screen flex-col'>
         {(session?.user.image)
-          ? <Image src={session?.user.image} alt='avatar' width={200} height={200} />
+          ? <Image src={session?.user.image} alt='avatar' width={80} height={80} className='rounded-full' />
           : null
         }
         <h2 className='text-3xl my-3'>Admin page - welcome back {(session?.user.username) ? session?.user.username : session?.user.name}</h2>
