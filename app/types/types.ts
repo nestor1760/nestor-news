@@ -21,3 +21,8 @@ export interface IArticle {
 export interface ISessionProps {
   children: ReactNode,
 }
+
+//for Avatar.tsx
+export type TAvatarProps = {
+  path: string
+}

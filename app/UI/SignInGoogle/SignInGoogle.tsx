@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react';
 const SignInGoogle = () => {
   const loginWithGoogle = () => signIn(
     'google',
-    { callbackUrl: 'http://localhost:3000/admin' }
+    { callbackUrl: 'http://localhost:3000/user' }
   );
 
   return (
