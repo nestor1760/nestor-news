@@ -4,7 +4,7 @@ import ArticlesList from '../components/ArticlesList/ArticlesList'
 
 const UserPage = () => {
   return (
-    <section className='flex w-screen justify-end relative'>
+    <section className='flex w-screen justify-end relative bg-cyan-400'>
       <Sidebar />
       <ArticlesList />
     </section>
