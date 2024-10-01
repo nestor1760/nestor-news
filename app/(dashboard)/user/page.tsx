@@ -1,5 +1,5 @@
-import Sidebar from '@/app/components/Sidebar/Sidebar';
 import { authOptions } from '@/app/lib/authOptions';
+import UserPage from '@/app/pages/UserPage';
 import { buttonVariants } from '@/app/UI/Button/Button';
 import { getServerSession } from 'next-auth/next';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ import Link from 'next/link';
 const User = async () => {
   const session = await getServerSession(authOptions)
 
-  if (session?.user) return <Sidebar />
+  if (session?.user) return <UserPage />
 
   return (
     <div className='flex items-center justify-center flex-col h-screen'>

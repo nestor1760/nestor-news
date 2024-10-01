@@ -17,7 +17,7 @@ const Sidebar = async () => {
   ]
 
   return (
-    <div className='h-screen absolute top-0 left-0 flex flex-col border-r-[1px] border-stone-400 text-stone-500 rounded-tr-lg rounded-br-lg'>
+    <div className='h-screen w-full max-w-[300px] flex flex-col border-r-[1px] border-stone-400 text-stone-500 rounded-tr-lg rounded-br-lg z-50'>
       <div className='w-full flex items-start p-6'>
         <Avatar path={session?.user.image ? session?.user.image : ''} />
         <p className='ml-[10px] font-bold'>

@@ -13,7 +13,18 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
   'articles/fetchArticles',
 
   async () => {
-    const url = process.env.NEXT_PUBLIC_ARTICLES_ALL_URL as string
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY
+    const q = 'bitcoin'
+    // const qInTitle =  
+    const from = '2023-09-01'
+    const to = '2023-10-01'
+    const sortBy = 'popularity'
+    const pageSize = '10'
+    const page = '1'
+    const language = 'en'
+
+    // const url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${API_KEY}`
+    const url = `https://newsapi.org/v2/everything?q=${q}&from=${from}&page=${page}&to=${to}&sortBy=${sortBy}&language=${language}&pageSize=${pageSize}&apiKey=${API_KEY}`
 
     try {
       const response = await fetch(url)
@@ -22,9 +33,9 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data: IArticle[] = await response.json()
+      const data = await response.json()
 
-      return data
+      return data.articles
 
     } catch (error) {
       if (error instanceof Error) {

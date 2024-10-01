@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./styles/globals.css";
 import ProviderSession from "./lib/SessionProvider";
 import { Toaster } from "@/app/UI/Toast/toaster";
+import ReduxProvider from "./lib/ReduxProvider";
 
 
 export const metadata: Metadata = {
@@ -18,8 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ProviderSession>
-          {children}
-          <Toaster />
+          <ReduxProvider>
+            {children}
+            <Toaster />
+          </ReduxProvider>
         </ProviderSession>
       </body>
     </html>
