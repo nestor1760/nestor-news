@@ -15,18 +15,22 @@ const ArticlesList = () => {
   }, [])
 
   return (
-    <div className="w-full h-screen overflow-y-auto flex items-start justify-center">
+    <div className="w-full h-screen overflow-y-auto flex items-start justify-center scrollbar-thin scrollbar-thumb-transparent">
       {isLoading && <p>Loading...</p>}
 
       {error && <p className="text-red-500">Error: {error}</p>}
 
       {!isLoading && !error && articles.length > 0 && (
-        <div className="flex items-stretch justify-center flex-wrap gap-4 p-3">
+        <div className="flex items-stretch justify-center flex-wrap gap-6 p-3">
           {articles.map((article) => (
             <ArticlesItem
               title={article.title}
               urlToImage={article.urlToImage}
+              publishedAt={article.publishedAt}
+              description={article.description}
               url={article.url}
+              author={article.author}
+              key={article.title}
             />
           ))}
         </div>
@@ -34,7 +38,6 @@ const ArticlesList = () => {
 
       {!isLoading && articles.length === 0 && <p>No articles found</p>}
     </div>
-
   );
 }
 

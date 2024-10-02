@@ -62,3 +62,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Chrome, Safari та інших Webkit-браузерів */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Firefox */
+.scrollbar-thin {
+  scrollbar-width: none;
+}
+
+/* Internet Explorer | Edge */
+.scrollbar-thin {
+  -ms-overflow-style: none;
+}

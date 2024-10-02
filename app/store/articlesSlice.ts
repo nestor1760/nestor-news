@@ -14,10 +14,10 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
 
   async () => {
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY
-    const q = 'Apple'
-    const from = '2023-10-01'
+    const q = 'Javascript'
+    // const from = '2023-10-01'
     //publishedAt, relevancy, popularity
-    const sortBy = 'publishedAt'
+    // const sortBy = 'relevancy'
     //bbc-news,techcrunch
     const sources = 'bbc-news'
     //bbc.co.uk,techcrunch.com
@@ -25,10 +25,10 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
     //ar, de, en, es, fr, he, it, nl, no, pt, ru, sv, ud, zh
     const language = 'en'
     const page = '1'
-    const pageSize = '15'
+    const pageSize = '50'
 
 
-    const url = `https://newsapi.org/v2/everything?q=${q}&sortby=${sortBy}&page=${page}&pageSize=${pageSize}&language=${language}&apiKey=${API_KEY}`
+    const url = `https://newsapi.org/v2/everything?q=${q}&page=${page}&pageSize=${pageSize}&language=${language}&apiKey=${API_KEY}`
 
     try {
       const response = await fetch(url)

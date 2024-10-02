@@ -2,7 +2,7 @@
 
 import { signOut } from "next-auth/react"
 import { Button } from "../Button/Button"
-import { TbLogout2 } from "react-icons/tb";
+import { TbLogout } from "react-icons/tb";
 
 const SignOutBtn = () => {
   return (
@@ -13,7 +13,7 @@ const SignOutBtn = () => {
       })}
       variant='destructive'
     >
-      <TbLogout2 size={20} className="mr-[10px]" />
+      <TbLogout size={20} className="mr-[10px]" />
       Logout
     </Button>
 
