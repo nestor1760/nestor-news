@@ -3,6 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/hook"
 import { fetchArticles } from "@/app/store/articlesSlice"
 import { useEffect } from "react"
+import ArticlesItem from "../ArticlesItem/ArticlesItem"
 
 
 const ArticlesList = () => {
@@ -14,21 +15,20 @@ const ArticlesList = () => {
   }, [])
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen overflow-y-auto flex items-start justify-center">
       {isLoading && <p>Loading...</p>}
 
       {error && <p className="text-red-500">Error: {error}</p>}
 
       {!isLoading && !error && articles.length > 0 && (
-        <div className="w-full h-full flex items-start justify-center overflow-y-auto">
-          <div className="w-full flex items-start justify-start flex-wrap gap-4 p-4">
-            {articles.map((article) => (
-              <div key={article.url} className="w-[200px] h-[300px] bg-white p-4 rounded shadow-md">
-                <img src={article.urlToImage} alt={article.title} className="w-full h-[150px] object-cover rounded" />
-                <h4 className="text-sm mt-2">{article.title}</h4>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-stretch justify-center flex-wrap gap-4 p-3">
+          {articles.map((article) => (
+            <ArticlesItem
+              title={article.title}
+              urlToImage={article.urlToImage}
+              url={article.url}
+            />
+          ))}
         </div>
       )}
 

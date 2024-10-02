@@ -28,3 +28,6 @@ export interface ISessionProps {
 export type TAvatarProps = {
   path: string
 }
+
+//for ArticlesItem.tsx
+export type ArticlesProps = Partial<IArticle>;

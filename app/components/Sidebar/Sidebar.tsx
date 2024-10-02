@@ -31,7 +31,6 @@ const Sidebar = async () => {
             <p>{item.name}</p>
           </Button>
         )}
-
       </div>
       <div className='mt-auto p-6 border-t-[1px] border-stone-400'>
         <SignOutBtn />

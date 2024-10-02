@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { Rubik } from 'next/font/google';
 import "./styles/globals.css";
 import ProviderSession from "./lib/SessionProvider";
 import { Toaster } from "@/app/UI/Toast/toaster";
 import ReduxProvider from "./lib/ReduxProvider";
+
+const rubik = Rubik({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 
 export const metadata: Metadata = {
@@ -16,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={rubik.className}>
       <body>
         <ProviderSession>
           <ReduxProvider>
