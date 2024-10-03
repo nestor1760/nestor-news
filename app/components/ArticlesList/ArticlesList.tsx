@@ -4,6 +4,8 @@ import { useAppDispatch, useAppSelector } from "@/app/hook"
 import { fetchArticles } from "@/app/store/articlesSlice"
 import { useEffect } from "react"
 import ArticlesItem from "../ArticlesItem/ArticlesItem"
+import Loader from "@/app/UI/Loader/Loader"
+import CenteredDiv from "../CenteredDiv/CenteredDiv"
 
 
 const ArticlesList = () => {
@@ -16,9 +18,17 @@ const ArticlesList = () => {
 
   return (
     <div className="w-full h-screen overflow-y-auto flex items-start justify-center scrollbar-thin scrollbar-thumb-transparent">
-      {isLoading && <p>Loading...</p>}
+      {isLoading && (
+        <CenteredDiv>
+          <Loader />
+        </CenteredDiv>
+      )}
 
-      {error && <p className="text-red-500">Error: {error}</p>}
+      {error && (
+        <CenteredDiv>
+          <h3 className="text-red-500">Error: {error}</h3>
+        </CenteredDiv>
+      )}
 
       {!isLoading && !error && articles.length > 0 && (
         <div className="flex items-stretch justify-center flex-wrap gap-6 p-3">
@@ -36,7 +46,7 @@ const ArticlesList = () => {
         </div>
       )}
 
-      {!isLoading && articles.length === 0 && <p>No articles found</p>}
+      {!isLoading && articles.length === 0 && <CenteredDiv>No articles found...</CenteredDiv>}
     </div>
   );
 }

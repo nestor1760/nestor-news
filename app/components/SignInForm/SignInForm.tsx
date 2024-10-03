@@ -11,6 +11,9 @@ import { useRouter } from 'next/navigation';
 import { Input } from '@/app/UI/Form/Input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/app/UI/Form/Form';
 import { useToast } from '@/app/hooks/use-toast';
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { useState } from 'react';
 
 const FormSchema = z.object({
   email: z.string().min(1, 'Email is required').email('Invalid email'),
@@ -21,6 +24,8 @@ const FormSchema = z.object({
 });
 
 const SignInForm = () => {
+  const [visible, setVisible] = useState<boolean>(false)
+
   const router = useRouter();
   const { toast } = useToast()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -82,11 +87,16 @@ const SignInForm = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type='password'
-                      placeholder='Enter your password'
-                      {...field}
-                    />
+                    <div className='relative'>
+                      <Input
+                        type={visible ? 'text' : 'password'}
+                        placeholder='Enter your password'
+                        {...field}
+                      />
+                      <div className='absolute top-2 right-2 cursor-pointer' onClick={() => setVisible(prev => !prev)}>
+                        {visible ? <IoEyeOffOutline size={23} /> : <IoEyeOutline size={23} />}
+                      </div>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -11,6 +11,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import SignInGoogle from '@/app/UI/SignInGoogle/SignInGoogle';
 import { Input } from '@/app/UI/Form/Input';
 import { useToast } from '@/app/hooks/use-toast';
+import { useState } from 'react';
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
 
 const FormSchema = z
   .object({
@@ -28,6 +31,8 @@ const FormSchema = z
   });
 
 const SignUpForm = () => {
+  const [visible, setVisible] = useState<boolean>(false)
+
   const router = useRouter();
   const { toast } = useToast()
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -108,11 +113,16 @@ const SignUpForm = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      type='password'
-                      placeholder='Enter your password'
-                      {...field}
-                    />
+                    <div className='relative'>
+                      <Input
+                        type={visible ? 'text' : 'password'}
+                        placeholder='Enter your password'
+                        {...field}
+                      />
+                      <div className='absolute top-2 right-2 cursor-pointer' onClick={() => setVisible(prev => !prev)}>
+                        {visible ? <IoEyeOffOutline size={23} /> : <IoEyeOutline size={23} />}
+                      </div>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

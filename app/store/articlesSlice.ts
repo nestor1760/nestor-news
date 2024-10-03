@@ -19,9 +19,9 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
     //publishedAt, relevancy, popularity
     // const sortBy = 'relevancy'
     //bbc-news,techcrunch
-    const sources = 'bbc-news'
+    // const sources = 'bbc-news'
     //bbc.co.uk,techcrunch.com
-    const domains = 'bbc.co.uk'
+    // const domains = 'bbc.co.uk'
     //ar, de, en, es, fr, he, it, nl, no, pt, ru, sv, ud, zh
     const language = 'en'
     const page = '1'
