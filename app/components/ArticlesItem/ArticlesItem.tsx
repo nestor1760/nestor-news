@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const ArticlesItem: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt, url }) => {
   return (
-    <div className="w-[350px] bg-white shadow-md flex items-center justify-start flex-col relative">
+    <div className="w-[350px] bg-white shadow-custom flex items-center justify-start flex-col relative">
       <img
         src={urlToImage ? urlToImage : '/media/no-image.svg'}
         alt={title as string}
