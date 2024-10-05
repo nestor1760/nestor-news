@@ -50,7 +50,7 @@ const SignInForm = () => {
         variant: 'destructive'
       })
     } else {
-      router.push('/user')
+      router.push('/user/home')
       router.refresh()
     }
 

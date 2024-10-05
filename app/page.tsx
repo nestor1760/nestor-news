@@ -1,9 +1,15 @@
-import User from "./(dashboard)/user/page";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./lib/authOptions";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
-  return (
-    <div className="h-screen flex items-center justify-center flex-col w-full">
-      <User />
-    </div>
-  );
+  const session = await getServerSession(authOptions)
+
+  if (session) {
+    redirect("/user/home");
+  } else {
+    redirect("/sign-in");
+  }
+
+  return null;
 }

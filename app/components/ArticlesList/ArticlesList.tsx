@@ -3,9 +3,9 @@
 import { useAppDispatch, useAppSelector } from "@/app/hook"
 import { fetchArticles } from "@/app/store/articlesSlice"
 import { useEffect } from "react"
-import ArticlesItem from "../ArticlesItem/ArticlesItem"
 import Loader from "@/app/UI/Loader/Loader"
 import CenteredDiv from "../CenteredDiv/CenteredDiv"
+import ArticlesCard from "../ArticlesItem/ArticlesItem"
 
 
 const ArticlesList = () => {
@@ -33,7 +33,7 @@ const ArticlesList = () => {
       {!isLoading && !error && articles.length > 0 && (
         <div className="flex items-stretch justify-center flex-wrap gap-6 p-3">
           {articles.map((article) => (
-            <ArticlesItem
+            <ArticlesCard
               title={article.title}
               urlToImage={article.urlToImage}
               publishedAt={article.publishedAt}
