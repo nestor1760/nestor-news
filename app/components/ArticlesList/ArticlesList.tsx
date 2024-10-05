@@ -5,8 +5,7 @@ import { fetchArticles } from "@/app/store/articlesSlice"
 import { useEffect } from "react"
 import Loader from "@/app/UI/Loader/Loader"
 import CenteredDiv from "../CenteredDiv/CenteredDiv"
-import ArticlesCard from "../ArticlesItem/ArticlesItem"
-
+import ArticleCard from "../ArticleCard/ArticleCard"
 
 const ArticlesList = () => {
   const dispatch = useAppDispatch()
@@ -31,9 +30,9 @@ const ArticlesList = () => {
       )}
 
       {!isLoading && !error && articles.length > 0 && (
-        <div className="flex items-stretch justify-center flex-wrap gap-6 p-3">
+        <div className="flex w-full items-stretch justify-center flex-wrap gap-4 p-3">
           {articles.map((article) => (
-            <ArticlesCard
+            <ArticleCard
               title={article.title}
               urlToImage={article.urlToImage}
               publishedAt={article.publishedAt}

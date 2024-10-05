@@ -1,8 +1,8 @@
 import { authOptions } from '@/app/lib/authOptions'
 import Avatar from '@/app/UI/Avatar/Avatar'
-import { Button } from '@/app/UI/Button/Button'
 import SignOutBtn from '@/app/UI/SignOut/SignOutBtn'
 import { getServerSession } from 'next-auth'
+import Link from 'next/link'
 import { CiCircleList } from "react-icons/ci";
 import { FaHome } from "react-icons/fa";
 import { MdOutlineFavorite } from "react-icons/md";
@@ -11,9 +11,9 @@ const Sidebar = async () => {
   const session = await getServerSession(authOptions)
 
   const menuData = [
-    { id: 1, name: 'Home', icon: <FaHome size={20} className='mr-[10px]' /> },
-    { id: 2, name: 'Articles', icon: <CiCircleList size={20} className='mr-[10px]' /> },
-    { id: 3, name: 'Favorites', icon: <MdOutlineFavorite size={20} className='mr-[10px]' /> },
+    { id: 1, name: 'Home', path: '/user/home', icon: <FaHome size={20} className='mr-[10px]' /> },
+    { id: 2, name: 'Articles', path: '/user/articles', icon: <CiCircleList size={20} className='mr-[10px]' /> },
+    { id: 3, name: 'Favorites', path: '/user/favorites', icon: <MdOutlineFavorite size={20} className='mr-[10px]' /> },
   ]
 
   return (
@@ -26,10 +26,14 @@ const Sidebar = async () => {
       </div>
       <div className='flex flex-col items-center justify-start h-full border-[1px] p-6'>
         {menuData.map(item =>
-          <Button variant={'navigation'} size={'nav'} key={item.id}>
+          <Link
+            href={item.path}
+            className='w-full flex items-center justify-start hover:bg-blue-500 hover:text-white h-11 rounded-md py-5 px-4'
+            key={item.id}
+          >
             {item.icon}
             <p>{item.name}</p>
-          </Button>
+          </Link>
         )}
       </div>
       <div className='mt-auto p-6 border-t-[1px] border-stone-400'>

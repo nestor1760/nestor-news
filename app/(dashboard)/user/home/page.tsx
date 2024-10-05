@@ -1,11 +1,21 @@
+import CenteredDiv from '@/app/components/CenteredDiv/CenteredDiv'
+import { authOptions } from '@/app/lib/authOptions'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
-const page = () => {
-  return (
-    <div className='w-full h-screen flex items-center justify-center'>
-      Welcome back!
-    </div>
-  )
+const page = async () => {
+  const session = await getServerSession(authOptions)
+
+  if (session) {
+    return (
+      <CenteredDiv>
+        Welcome back!
+      </CenteredDiv>
+    )
+  } else {
+    redirect("/sign-in");
+  }
 }
 
 export default page

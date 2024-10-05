@@ -8,7 +8,7 @@ import { FaRegHeart } from "react-icons/fa";
 // import { FaHeart } from "react-icons/fa";
 import Link from 'next/link';
 
-const ArticlesCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt, url }) => {
+const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt, url }) => {
   return (
     <div className="w-[350px] bg-white shadow-custom flex items-center justify-start flex-col relative">
       <img
@@ -41,4 +41,4 @@ const ArticlesCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedA
   )
 }
 
-export default ArticlesCard
+export default ArticleCard
