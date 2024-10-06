@@ -120,7 +120,7 @@ const SignUpForm = () => {
                         {...field}
                       />
                       <div className='absolute top-2 right-2 cursor-pointer' onClick={() => setVisible(prev => !prev)}>
-                        {visible ? <IoEyeOffOutline size={23} /> : <IoEyeOutline size={23} />}
+                        {visible ? <IoEyeOutline size={23} /> : <IoEyeOffOutline size={23} />}
                       </div>
                     </div>
                   </FormControl>

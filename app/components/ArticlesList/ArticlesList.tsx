@@ -11,6 +11,9 @@ const ArticlesList = () => {
   const dispatch = useAppDispatch()
   const { articles, error, isLoading } = useAppSelector(state => state.articles)
 
+  console.log(articles);
+
+
   useEffect(() => {
     dispatch(fetchArticles())
   }, [])

@@ -1,14 +1,16 @@
 import { ArticlesProps } from '@/app/types/types'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { getCorrectDateFormat } from './utills'
 import { Button } from '@/app/UI/Button/Button'
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 import { FaRegHeart } from "react-icons/fa";
-// import { FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import Link from 'next/link';
 
 const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt, url }) => {
+  const [selected, setSelected] = useState<boolean>(false)
+
   return (
     <div className="w-[350px] bg-white shadow-custom flex items-center justify-start flex-col relative">
       <img
@@ -34,8 +36,12 @@ const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt
         variant={'ghost'}
         size={'icon'}
         className='absolute right-2 top-2'
+        onClick={() => setSelected(prev => !prev)}
       >
-        <FaRegHeart size={20} color='gray' />
+        {(selected)
+          ? <FaHeart size={20} color='red' />
+          : <FaRegHeart size={20} color='gray' />
+        }
       </Button>
     </div>
   )

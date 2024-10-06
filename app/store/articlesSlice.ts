@@ -25,7 +25,7 @@ export const fetchArticles = createAsyncThunk<IArticle[]>(
     //ar, de, en, es, fr, he, it, nl, no, pt, ru, sv, ud, zh
     const language = 'en'
     const page = '1'
-    const pageSize = '20'
+    const pageSize = '1'
 
 
     const url = `https://newsapi.org/v2/everything?q=${q}&page=${page}&pageSize=${pageSize}&language=${language}&apiKey=${API_KEY}`
