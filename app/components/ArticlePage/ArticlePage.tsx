@@ -1,7 +1,8 @@
 'use client'
 
-import CenteredDiv from '../CenteredDiv/CenteredDiv'
-import { IArticlesPageProps } from '@/app/types/types'
+import { getCorrectDateFormat } from '../ArticleCard/utills';
+import CenteredDiv from '../CenteredDiv/CenteredDiv';
+import { IArticlesPageProps } from '@/app/types/types';
 
 
 const ArticlePage = ({ articles, title }: IArticlesPageProps) => {
@@ -16,18 +17,29 @@ const ArticlePage = ({ articles, title }: IArticlesPageProps) => {
       </CenteredDiv>
     );
   }
+  article.url
+  article.content
+  article.author
+  article.publishedAt
 
   return (
     <CenteredDiv>
-      <div className='flex flex-col items-center justify-center my-[10%] border-solid border-2 border-black'>
-        <img
-          src={article.urlToImage}
-          alt={article.title}
-          className='w-[400px] h-[300px] object-contain'
-        />
-        <h3>{article.title}</h3>
-        <h3>{article.description}</h3>
-        <p>{article.content}</p>
+      <div className='flex flex-col items-center justify-start p-6 mx-7 max-w-[900px] border-solid border-2 border-black'>
+        <div className='flex flex-col my-10'>
+          <img
+            src={article.urlToImage}
+            alt={article.title}
+            className='w-[700px] object-contain'
+          />
+          <div className='flex w-full items-center justify-between'>
+            <p>{article.author ? article.author : 'Unknown author'}</p>
+            <p>{article.publishedAt ? getCorrectDateFormat(article.publishedAt) : 'Unknown date'}</p>
+          </div>
+        </div>
+        <div className='flex flex-col items-start justify-center'>
+          <h2>{article.title}</h2>
+          <p>{article.description}</p>
+        </div>
       </div>
     </CenteredDiv>
   )
