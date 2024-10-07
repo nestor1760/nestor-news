@@ -17,8 +17,6 @@ export interface IArticle {
   content: string;
 }
 
-
-
 //for SessionProvider.tsx
 export interface ISessionProps {
   children: ReactNode,
@@ -31,3 +29,15 @@ export type TAvatarProps = {
 
 //for ArticlesItem.tsx
 export type ArticlesProps = Partial<IArticle>;
+
+//for ArticlesList.tsx
+export interface IArticlesListProps {
+  articles: IArticle[],
+  error?: string
+}
+
+//for ArticlesPage.tsx
+export interface IArticlesPageProps {
+  articles: IArticle[];
+  title: string;
+}
