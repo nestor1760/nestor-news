@@ -41,3 +41,23 @@ export interface IArticlesPageProps {
   articles: IArticle[];
   title: string;
 }
+
+//for CardInfo.tsx
+export interface ICardInfoProps {
+  publishedAt: string | undefined,
+  author: string | undefined,
+  title: string | undefined
+}
+
+//for Image.tsx
+export interface IImageProps {
+  title: string | undefined,
+  urlToImage: string | undefined,
+  className?: string
+}
+
+//for ArticlePageinfo.tsx 
+export interface IArticlePageInfoProps {
+  description: string | undefined,
+  title: string | undefined,
+}

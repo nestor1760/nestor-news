@@ -21,7 +21,6 @@ const ArticlesList = ({ articles, error }: IArticlesListProps) => {
             urlToImage={article.urlToImage}
             publishedAt={article.publishedAt}
             description={article.description}
-            url={article.url}
             author={article.author}
             key={article.title}
           />

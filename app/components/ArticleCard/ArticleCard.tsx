@@ -1,46 +1,40 @@
 'use client'
 
 import { ArticlesProps } from '@/app/types/types'
-import React, { FC, useState } from 'react'
-import { getCorrectDateFormat } from './utills'
+import { FC, useState } from 'react'
 import { Button } from '@/app/UI/Button/Button'
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
-import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import Link from 'next/link';
+import { FaRegHeart } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
+import Link from 'next/link'
+import CardBody from './CardPart/CardInfo'
+import StyledImage from '@/app/UI/Image/Image'
 
-const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt, url }) => {
+const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt }) => {
   const [selected, setSelected] = useState<boolean>(false)
 
   const path = title !== undefined ? `/user/articles/${encodeURIComponent(title.replace(/\s+/g, '-').toLowerCase())}` : ''
 
   return (
-    <div className="w-[350px] bg-white shadow-custom flex items-center justify-start flex-col relative">
-      <img
-        src={urlToImage ? urlToImage : '/media/no-image.svg'}
-        alt={title as string}
-        className="w-full max-h-[200px] object-contain"
-      />
-      <div className='w-[80%] flex items-start justify-center flex-col mt-4 mb-7 h-full'>
-        <p className="text-[12px] font-bold text-gray-400 mb-4">{getCorrectDateFormat(publishedAt as string)}</p>
-        <p className="text-[12px] font-bold mb-4 decoration-solid underline">{author ? author : 'Unknown author'}</p>
-        {/* <p className="text-[20px] font-bold mb-[20px]">{title}</p> */}
-        <Link href={path} className="text-[20px] font-bold mb-[20px]">{title}</Link>
-        <div className="flex-grow"></div>
-        <Link
-          href={url as string}
-          target='_blank'
-          className='flex items-center justify-start duration-200 hover:text-blue-800 hover:underline'
-        >
-          Read more
-          <FaRegArrowAltCircleRight size={20} className='ml-1' />
-        </Link>
-      </div>
+    <div className='w-[350px] bg-white shadow-none flex items-center justify-start flex-col relative duration-200 hover:shadow-custom'>
+      <Link href={path}>
+        <div className='flex items-center justify-center flex-col'>
+          <StyledImage
+            title={title}
+            urlToImage={urlToImage}
+            className='w-full max-h-[200px] object-cover'
+          />
+          <CardBody
+            author={author}
+            publishedAt={publishedAt}
+            title={title}
+          />
+        </div>
+      </Link>
       <Button
         variant={'ghost'}
         size={'icon'}
-        className='absolute right-2 top-2'
+        className='absolute right-2 top-2 z-100'
         onClick={() => setSelected(prev => !prev)}
       >
         {(selected)
