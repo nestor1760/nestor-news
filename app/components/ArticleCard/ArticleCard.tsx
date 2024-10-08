@@ -22,7 +22,7 @@ const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt
           <StyledImage
             title={title}
             urlToImage={urlToImage}
-            className='w-full max-h-[200px] object-cover'
+            className='w-full max-h-[200px] object-contain'
           />
           <CardBody
             author={author}

@@ -28,7 +28,7 @@ const ArticlePage = ({ articles, title }: IArticlesPageProps) => {
           <StyledImage
             title={article.title}
             urlToImage={article.urlToImage}
-            className='w-[600px] object-contain'
+            className='w-[600px] max-h-[300px] object-contain'
           />
           <div className='flex w-full items-center justify-between'>
             <p>{article.author ? article.author : 'Unknown author'}</p>

@@ -32,7 +32,7 @@ export type ArticlesProps = Partial<IArticle>;
 
 //for ArticlesList.tsx
 export interface IArticlesListProps {
-  articles: IArticle[],
+  initialArticles: IArticle[],
   error?: string
 }
 

@@ -12,13 +12,13 @@ const page = async () => {
   let error = undefined;
 
   try {
-    articles = await fetchArticlesFromAPI();
+    articles = await fetchArticlesFromAPI(1);
   } catch (err) {
     error = err instanceof Error ? err.message : 'An unexpected error occurred';
   }
 
   if (session) {
-    return <ArticlesList articles={articles} error={error} />
+    return <ArticlesList initialArticles={articles} error={error} />
   } else {
     redirect("/sign-in");
   }

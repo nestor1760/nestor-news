@@ -3,6 +3,7 @@ import { Rubik } from 'next/font/google';
 import "./styles/globals.css";
 import ProviderSession from "./lib/SessionProvider";
 import { Toaster } from "@/app/UI/Toast/toaster";
+import ReduxProvider from "./lib/ReduxProvider";
 
 const rubik = Rubik({
   weight: ['400', '600', '700'],
@@ -24,8 +25,10 @@ export default function RootLayout({
     <html lang="en" className={rubik.className}>
       <body>
         <ProviderSession>
-          {children}
-          <Toaster />
+          <ReduxProvider>
+            {children}
+            <Toaster />
+          </ReduxProvider>
         </ProviderSession>
       </body>
     </html>

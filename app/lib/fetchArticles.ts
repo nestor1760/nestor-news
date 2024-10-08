@@ -1,11 +1,10 @@
 //get all articles from API
 
-export const fetchArticlesFromAPI = async () => {
+export const fetchArticlesFromAPI = async (page: number = 1) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const q = 'Javascript';
+  const q = 'Nike';
   const language = 'en';
-  const page = '1';
-  const pageSize = '5';
+  const pageSize = 15;
 
   const url = `https://newsapi.org/v2/everything?q=${q}&page=${page}&pageSize=${pageSize}&language=${language}&apiKey=${API_KEY}`;
 
