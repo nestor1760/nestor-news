@@ -2,9 +2,9 @@
 
 export const fetchArticlesFromAPI = async (page: number = 1) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const q = 'Nike';
+  const q = 'Bitcoin';
   const language = 'en';
-  const pageSize = 15;
+  const pageSize = 5;
 
   const url = `https://newsapi.org/v2/everything?q=${q}&page=${page}&pageSize=${pageSize}&language=${language}&apiKey=${API_KEY}`;
 

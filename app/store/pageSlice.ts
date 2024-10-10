@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPageState } from "../types/reduxTypes";
 
 const initialState: IPageState = {
-  page: 1
+  page: 2
 }
 
 const pageSlice = createSlice({

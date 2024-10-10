@@ -6,24 +6,40 @@ import CenteredDiv from '../CenteredDiv/CenteredDiv';
 import { IArticlesPageProps } from '@/app/types/types';
 import Link from 'next/link';
 import ArticlePageInfo from './ArticlePageInfo.tsx/ArticlePageInfo';
+import { useAppSelector } from '@/app/hook';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/app/UI/Button/Button';
 
 
-const ArticlePage = ({ articles, title }: IArticlesPageProps) => {
+const ArticlePage = ({ title }: IArticlesPageProps) => {
+  const { data } = useAppSelector(state => state.articles)
+  const router = useRouter()
+
   const decodeTitle = decodeURIComponent(title as string).replace(/-/g, ' ');
-
-  const article = articles.find((art) => art.title.toLowerCase() === decodeTitle.toLowerCase());
+  const article = data.find((art) => art.title.toLowerCase() === decodeTitle.toLowerCase());
 
   if (!article) {
     return (
       <CenteredDiv>
-        Article not found
+        Article not found...
       </CenteredDiv>
     );
+  }
+
+  const handleBack = () => {
+    router.back()
   }
 
   return (
     <CenteredDiv>
       <div className='flex flex-col items-start justify-start p-6 mx-7 max-w-[900px] bg-white shadow-custom rounded-md'>
+        <div>
+          <Button
+            onClick={handleBack}
+          >
+            Go back
+          </Button>
+        </div>
         <div className='flex flex-col my-6'>
           <StyledImage
             title={article.title}
@@ -42,7 +58,7 @@ const ArticlePage = ({ articles, title }: IArticlesPageProps) => {
         <Link
           href={article.url}
           target='_blank'
-          className='px-4 py-2 bg-black text-white rounded-lg mt-4 duration-200 hover:bg-slate-700'
+          className='bg-blue-600 text-white hover:bg-blue-600/80 px-4 py-2 rounded-lg mt-4 duration-200'
         >
           Read more
         </Link>

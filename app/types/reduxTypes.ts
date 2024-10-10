@@ -4,3 +4,8 @@ import { IArticle } from "./types";
 export interface IPageState {
   page: number
 }
+
+//for articlesSlice.ts
+export interface IArticlesState {
+  data: IArticle[],
+}

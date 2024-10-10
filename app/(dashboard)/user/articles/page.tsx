@@ -12,7 +12,7 @@ const page = async () => {
   let error = undefined;
 
   try {
-    articles = await fetchArticlesFromAPI(1);
+    articles = await fetchArticlesFromAPI();
   } catch (err) {
     error = err instanceof Error ? err.message : 'An unexpected error occurred';
   }

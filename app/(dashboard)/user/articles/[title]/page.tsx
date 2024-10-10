@@ -1,12 +1,9 @@
-import ArticlePage from '@/app/components/ArticlePage/ArticlePage'
-import { fetchArticlesFromAPI } from '@/app/lib/fetchArticles';
-import { IArticle } from '@/app/types/types';
+import ArticlePage from '@/app/components/ArticlePage/ArticlePage';
 
 const page = async ({ params }: { params: { title: string } }) => {
-  const articles: IArticle[] = await fetchArticlesFromAPI();
 
   return (
-    <ArticlePage articles={articles} title={params.title} />
+    <ArticlePage title={params.title} />
   )
 }
 

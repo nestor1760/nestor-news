@@ -38,7 +38,6 @@ export interface IArticlesListProps {
 
 //for ArticlesPage.tsx
 export interface IArticlesPageProps {
-  articles: IArticle[];
   title: string;
 }
 
