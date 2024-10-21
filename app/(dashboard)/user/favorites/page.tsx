@@ -1,4 +1,3 @@
-import CenteredDiv from '@/app/components/CenteredDiv/CenteredDiv'
 import { authOptions } from '@/app/lib/authOptions'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
@@ -9,9 +8,9 @@ const page = async () => {
 
   if (session) {
     return (
-      <CenteredDiv>
+      <div className='w-full h-full flex items-center justify-center'>
         Favorites
-      </CenteredDiv>
+      </div>
     )
   } else {
     redirect("/sign-in");

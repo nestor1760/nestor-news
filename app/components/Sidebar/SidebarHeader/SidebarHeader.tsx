@@ -1,19 +1,34 @@
 import { authOptions } from '@/app/lib/authOptions'
-import Avatar from '@/app/UI/Avatar/Avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/app/UI/Avatar/avatar'
+import { SidebarHeader, SidebarMenu, SidebarMenuItem } from '@/app/UI/SidebarUI/sidebar'
 import { getServerSession } from 'next-auth'
-import React from 'react'
 
-const SidebarHeader = async () => {
+const HeaderSidebar = async () => {
   const session = await getServerSession(authOptions)
 
+  const defPath = '/media/default-avatar.svg'
+
   return (
-    <div className='w-full flex items-start p-6'>
-      <Avatar path={session?.user.image ? session?.user.image : ''} />
-      <p className='ml-[10px] font-bold'>
-        {session?.user.name ? session?.user.name : session?.user.username}
-      </p>
-    </div>
+    // <SidebarHeader>
+    //   <Avatar>
+    //     <AvatarImage src={session?.user.image ? session?.user.image : defPath} />
+    //     <AvatarFallback>CN</AvatarFallback>
+    //   </Avatar>
+    //   <span>
+    //     {session?.user.name ? session?.user.name : session?.user.username}
+    //   </span>
+    // </SidebarHeader>
+    <SidebarHeader>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <Avatar>
+            <AvatarImage src={session?.user.image ? session?.user.image : defPath} />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </SidebarMenuItem>
+      </SidebarMenu>
+    </SidebarHeader>
   )
 }
 
-export default SidebarHeader
+export default HeaderSidebar
