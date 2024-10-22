@@ -1,32 +1,28 @@
-import { authOptions } from '@/app/lib/authOptions'
+'use client'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/UI/Avatar/avatar'
-import { SidebarHeader, SidebarMenu, SidebarMenuItem } from '@/app/UI/SidebarUI/sidebar'
-import { getServerSession } from 'next-auth'
+import { SidebarHeader, useSidebar } from '@/app/UI/SidebarUI/sidebar'
+import { FC } from 'react'
 
-const HeaderSidebar = async () => {
-  const session = await getServerSession(authOptions)
+type HeaderProps = {
+  img: string,
+  name: string | undefined | null
+}
 
-  const defPath = '/media/default-avatar.svg'
+const HeaderSidebar: FC<HeaderProps> = ({ img, name }) => {
+  const { open } = useSidebar()
 
   return (
-    // <SidebarHeader>
-    //   <Avatar>
-    //     <AvatarImage src={session?.user.image ? session?.user.image : defPath} />
-    //     <AvatarFallback>CN</AvatarFallback>
-    //   </Avatar>
-    //   <span>
-    //     {session?.user.name ? session?.user.name : session?.user.username}
-    //   </span>
-    // </SidebarHeader>
     <SidebarHeader>
-      <SidebarMenu>
-        <SidebarMenuItem>
-          <Avatar>
-            <AvatarImage src={session?.user.image ? session?.user.image : defPath} />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-        </SidebarMenuItem>
-      </SidebarMenu>
+      <div className='flex items-center'>
+        <Avatar className='mr-3'>
+          <AvatarImage src={img} />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        {open && (
+          <span className='text-lg font-semibold'>{name}</span>
+        )}
+      </div>
     </SidebarHeader>
   )
 }

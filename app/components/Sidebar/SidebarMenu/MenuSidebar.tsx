@@ -2,10 +2,8 @@ import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, Side
 import { Heart, Home, MessageSquareText } from 'lucide-react';
 import Link from 'next/link';
 
-
-
 const MenuSidebar = () => {
-  // Menu items.
+
   const items = [
     {
       title: "Home",
