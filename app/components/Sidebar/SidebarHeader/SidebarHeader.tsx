@@ -13,16 +13,14 @@ const HeaderSidebar: FC<HeaderProps> = ({ img, name }) => {
   const { open } = useSidebar()
 
   return (
-    <SidebarHeader>
-      <div className='flex items-center'>
-        <Avatar className='mr-3'>
-          <AvatarImage src={img} />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-        {open && (
-          <span className='text-lg font-semibold'>{name}</span>
-        )}
-      </div>
+    <SidebarHeader className='flex items-center flex-col'>
+      <Avatar>
+        <AvatarImage src={img} />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      {open && (
+        <span className='text-lg font-semibold'>{name}</span>
+      )}
     </SidebarHeader>
   )
 }

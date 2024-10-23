@@ -2,7 +2,7 @@
 
 export const fetchArticlesFromAPI = async (page: number = 1) => {
   const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const q = 'Bitcoin';
+  const q = 'Adidas';
   const language = 'en';
   const pageSize = 5;
 

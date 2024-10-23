@@ -46,7 +46,11 @@ const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
   }
 
   if (!data || data.length === 0) {
-    return <CenteredDiv><Loader /></CenteredDiv>;
+    return (
+      <CenteredDiv>
+        <Loader />
+      </CenteredDiv>
+    )
   }
 
   return (
