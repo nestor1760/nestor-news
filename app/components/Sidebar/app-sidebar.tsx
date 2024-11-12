@@ -7,8 +7,8 @@ import FooterSidebar from "./SidebarFooter/SidebarFooter"
 
 export async function AppSidebar() {
   const session = await getServerSession(authOptions)
-  const defPath = '/media/default-avatar.svg'
 
+  const defPath = '/media/default-avatar.svg'
   const userName = session?.user.name ? session?.user.name : session?.user.username
   const imagePath = session?.user.image ? session?.user.image : defPath
 
