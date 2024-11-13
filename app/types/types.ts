@@ -59,4 +59,5 @@ export interface IImageProps {
 export interface IArticlePageInfoProps {
   description: string | undefined,
   title: string | undefined,
+  path: string | undefined
 }

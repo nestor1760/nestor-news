@@ -16,7 +16,7 @@ const ArticleCard: FC<ArticlesProps> = ({ title, author, urlToImage, publishedAt
   const path = title !== undefined ? `/user/articles/${encodeURIComponent(title.replace(/\s+/g, '-').toLowerCase())}` : ''
 
   return (
-    <div className='w-[350px] bg-white shadow-none flex items-center justify-start flex-col relative duration-200 hover:shadow-custom'>
+    <div className='w-[350px] bg-white shadow-none flex items-center justify-start flex-col relative duration-200 hover:shadow-custom border-[1px] border-black'>
       <Link href={path}>
         <div className='flex items-center justify-center flex-col'>
           <StyledImage
