@@ -3,33 +3,46 @@
 import StyledImage from '@/app/UI/Image/Image';
 import { getCorrectDateFormat } from '../ArticleCard/utills';
 import CenteredDiv from '../CenteredDiv/CenteredDiv';
-import { IArticlesPageProps } from '@/app/types/types';
+import { IArticle, IArticlesPageProps } from '@/app/types/types';
 import ArticlePageInfo from './ArticlePageInfo.tsx/ArticlePageInfo';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/app/UI/Button/Button';
-import { useAppSelector } from '@/app/hook';
+import { fetchArticleByTitle } from '@/app/lib/fetchArticles';
+import { useEffect, useState } from 'react';
 
 const ArticlePage = ({ title }: IArticlesPageProps) => {
   const router = useRouter()
-  const { data } = useAppSelector(state => state.articles)
+  const [article, setArticle] = useState<IArticle | null>(null)
 
-  const decodeTitle = decodeURIComponent(title as string).replace(/-/g, ' ');
-  const article = data.find((art) => art.title.toLowerCase() === decodeTitle.toLowerCase());
-
-  if (!article) {
-    return (
-      <CenteredDiv>
-        Article not found...
-      </CenteredDiv>
-    );
-  }
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const fetchedArticle = await fetchArticleByTitle(title);
+        setArticle(fetchedArticle);
+      } catch (error) {
+        console.error("Error fetching article:", error);
+      }
+    }
+    fetchArticle()
+  }, [title])
 
   const handleBack = () => {
     router.back()
   }
 
+  if (!article) {
+    return (
+      <CenteredDiv>
+        <div className='flex flex-col items-center'>
+          <p className='mb-6'>Article not found...</p>
+          <Button onClick={handleBack}>Go back</Button>
+        </div>
+      </CenteredDiv>
+    );
+  }
+
   return (
-    <div className='flex w-full items-center justify-start p-6'>
+    <div className='flex w-full items-center justify-start p-6 overflow-y-auto'>
       <div className='flex w-full flex-col items-start justify-start lg:flex-row lg:justify-center'>
         <div className='h-full'>
           <Button onClick={handleBack}>Go back</Button>

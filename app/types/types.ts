@@ -17,6 +17,11 @@ export interface IArticle {
   content: string;
 }
 
+//for fetchArticles.ts
+export type TFetchProps = {
+  url: string,
+}
+
 //for SessionProvider.tsx
 export interface ISessionProps {
   children: ReactNode,
