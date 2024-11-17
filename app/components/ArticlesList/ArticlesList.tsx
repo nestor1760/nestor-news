@@ -10,6 +10,8 @@ import { useAppDispatch, useAppSelector } from "@/app/hook";
 import { setPage } from "@/app/store/pageSlice";
 import { setArticles } from "@/app/store/articlesSlice";
 import Loader from "@/app/UI/Loader/Loader";
+import ListItems from "../ListItems/ListItems";
+import ListWrapper from "./ListWrapper";
 
 const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
   const [hasMore, setHasMore] = useState<boolean>(true)
@@ -54,10 +56,7 @@ const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
   }
 
   return (
-    <div
-      id="scrollableDiv"
-      className="w-full h-screen overflow-y-auto flex items-start justify-center scrollbar-thin scrollbar-thumb-transparent"
-    >
+    <ListWrapper id="scrollableDiv">
       <InfiniteScroll
         dataLength={data.length}
         next={fetchMoreArticles}
@@ -67,7 +66,7 @@ const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
         loader={<div className="flex items-center justify-center mt-2">Loading...</div>}
         endMessage={<div className="flex items-center justify-center mt-7">No more articles to load...</div>}
       >
-        <div className="flex w-full items-stretch justify-center flex-wrap gap-4 p-3">
+        <ListItems>
           {data.map((article) => (
             <ArticleCard
               title={article.title}
@@ -78,9 +77,9 @@ const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
               key={article.title}
             />
           ))}
-        </div>
+        </ListItems>
       </InfiniteScroll>
-    </div>
+    </ListWrapper>
   );
 }
 

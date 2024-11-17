@@ -66,3 +66,16 @@ export interface IArticlePageInfoProps {
   title: string | undefined,
   path: string | undefined
 }
+
+//types for List
+export type TListProps = {
+  className?: string,
+  children: ReactNode
+}
+
+//for WrapperList
+export type WrapperListProps = {
+  children: ReactNode,
+  id?: string | undefined,
+  className?: string
+}

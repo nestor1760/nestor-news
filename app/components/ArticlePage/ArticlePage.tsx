@@ -44,12 +44,12 @@ const ArticlePage = ({ title }: IArticlesPageProps) => {
   return (
     <div className='flex w-full items-center justify-start p-6 overflow-y-auto'>
       <div className='flex w-full flex-col items-start justify-start lg:flex-row lg:justify-center'>
-        <div className='h-full'>
-          <Button onClick={handleBack}>Go back</Button>
+        <div className='h-full flex flex-col'>
+          <Button onClick={handleBack} className='self-end lg:self-start'>Go back</Button>
           <StyledImage
             title={article.title}
             urlToImage={article.urlToImage}
-            className='w-[600px] object-contain mt-4'
+            className='min-w-[450px] w-[600px] object-contain mt-4'
           />
           <div className='flex w-full items-center justify-between my-3'>
             <p>{article.author ? article.author : 'Unknown author'}</p>

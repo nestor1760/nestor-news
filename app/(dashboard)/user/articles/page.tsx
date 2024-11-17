@@ -1,6 +1,7 @@
 import ArticlesList from '@/app/components/ArticlesList/ArticlesList'
 import { authOptions } from '@/app/lib/authOptions';
 import { fetchArticlesFromAPI } from '@/app/lib/fetchArticles';
+import { IArticle } from '@/app/types/types';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import React from 'react'
@@ -8,7 +9,7 @@ import React from 'react'
 const page = async () => {
   const session = await getServerSession(authOptions)
 
-  let articles = [];
+  let articles = [] as IArticle[];
   let error = undefined;
 
   try {
