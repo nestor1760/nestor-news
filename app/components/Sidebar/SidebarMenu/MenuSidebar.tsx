@@ -1,8 +1,12 @@
+'use client'
+
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/app/UI/SidebarUI/sidebar';
 import { Heart, Home, MessageSquareText } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 
 const MenuSidebar = () => {
+  const pathname = usePathname();
 
   const items = [
     {
@@ -30,7 +34,7 @@ const MenuSidebar = () => {
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <Link href={item.url}>
+                <Link href={item.url} className={pathname === item.url ? 'font-bold' : ''}>
                   <item.icon />
                   <span>{item.title}</span>
                 </Link>

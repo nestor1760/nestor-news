@@ -9,3 +9,8 @@ export interface IPageState {
 export interface IArticlesState {
   data: IArticle[],
 }
+
+//for favouritesSlice.ts
+export interface IFavouritesState {
+  data: IArticle[]
+}

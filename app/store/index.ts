@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import pageSlice from "./pageSlice";
 import articlesSlice from "./articlesSlice";
+import favouritesSlice from "./favouritesSlice"
 
 const store = configureStore({
   reducer: {
     page: pageSlice,
     articles: articlesSlice,
+    favourites: favouritesSlice
   }
 })
 
