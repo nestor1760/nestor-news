@@ -14,3 +14,9 @@ export interface IArticlesState {
 export interface IFavouritesState {
   data: IArticle[]
 }
+
+//for searchSlice.ts
+export interface IFilterState {
+  filterValue: string
+  debouncedValue: string
+}

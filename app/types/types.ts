@@ -79,3 +79,9 @@ export type WrapperListProps = {
   id?: string | undefined,
   className?: string
 }
+
+//for useFilter.ts
+export type TFilterProps = {
+  inputValue: string,
+  list: IArticle[]
+}

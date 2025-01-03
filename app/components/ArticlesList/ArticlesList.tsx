@@ -14,10 +14,11 @@ import ListItems from "../ListItems/ListItems";
 import ListWrapper from "./ListWrapper";
 
 const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
-  const [hasMore, setHasMore] = useState<boolean>(true)
   const { page } = useAppSelector(state => state.page)
   const { data } = useAppSelector(state => state.articles)
   const dispatch = useAppDispatch()
+
+  const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
     if (data.length === 0 && initialArticles.length > 0) {
@@ -56,30 +57,32 @@ const ArticlesList = ({ initialArticles, error }: IArticlesListProps) => {
   }
 
   return (
-    <ListWrapper id="scrollableDiv">
-      <InfiniteScroll
-        dataLength={data.length}
-        next={fetchMoreArticles}
-        hasMore={hasMore}
-        scrollableTarget="scrollableDiv"
-        scrollThreshold={0.7}
-        loader={<div className="flex items-center justify-center mt-2">Loading...</div>}
-        endMessage={<div className="flex items-center justify-center mt-7">No more articles to load...</div>}
-      >
-        <ListItems>
-          {data.map((article) => (
-            <ArticleCard
-              title={article.title}
-              urlToImage={article.urlToImage}
-              publishedAt={article.publishedAt}
-              description={article.description}
-              author={article.author}
-              key={article.title}
-            />
-          ))}
-        </ListItems>
-      </InfiniteScroll>
-    </ListWrapper>
+    <>
+      <ListWrapper id="scrollableDiv">
+        <InfiniteScroll
+          dataLength={data.length}
+          next={fetchMoreArticles}
+          hasMore={hasMore}
+          scrollableTarget="scrollableDiv"
+          scrollThreshold={0.7}
+          loader={<div className="flex items-center justify-center mt-2">Loading...</div>}
+          endMessage={<div className="flex items-center justify-center mt-7">No more articles to load...</div>}
+        >
+          <ListItems>
+            {data.map((article) => (
+              <ArticleCard
+                title={article.title}
+                urlToImage={article.urlToImage}
+                publishedAt={article.publishedAt}
+                description={article.description}
+                author={article.author}
+                key={article.title}
+              />
+            ))}
+          </ListItems>
+        </InfiniteScroll>
+      </ListWrapper>
+    </>
   );
 }
 
